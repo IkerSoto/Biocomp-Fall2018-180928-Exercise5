@@ -1,14 +1,11 @@
-# I managed to write a script that sends to the output the list of wages people that went to college and people that didn't earn, however I'm struggling with the next part, I'm assuming we need to get the averages in order to substract one from the other but I'm not sure how to do that, any ideas? or maybe I'm understanding the exercise wrong?   
+#Calculates the difference between the average minimum wage of a person that graduated college (16 years of education) and one that didn't (12 years of education).
+#Usage: bash wages12vs16.sh wages.csv
+
+12years=$(cat wages.csv |cut -d, -f3,4|grep -E ^12 |awk -F ','  '{sum +=$2} END {print sum/NR}')
+16years=$(cat wages.csv |cut -d, -f3,4|grep -E ^16 |awk -F ','  '{sum +=$2} END {print sum/NR}')
+
+echo "On average people that graduated college earn:"
+echo "$16years - $12years" |bc
+echo "more than people that didn't finish it"
 
 
-
-
-for file in $1
-do
-echo "Wages of people that didn't go to college"
-cat $file |cut -d , -f3,4 |grep -E ^12 |cut -d , -f2
-echo "Wages of people that went to college"  
-cat $file |cut -d , -f3,4 |grep -E ^16 |cut -d, -f2
-done
-
-# ...?
