@@ -1,11 +1,8 @@
-#Calculates the difference between the average minimum wage of a person that graduated college (16 years of education) and one that didn't (12 years of education).
-#Usage: bash wages12vs16.sh wages.csv
+#Activity 3
+#Calculates the difference between the minimum wage of a college graduate and someone who is not (college degree minimum wage - no college minimum wage). 
+#Usage: bash wages12vs16.sh
 
-12years=$(cat wages.csv |cut -d, -f3,4|grep -E ^12 |awk -F ','  '{sum +=$2} END {print sum/NR}')
-16years=$(cat wages.csv |cut -d, -f3,4|grep -E ^16 |awk -F ','  '{sum +=$2} END {print sum/NR}')
-
-echo "On average people that graduated college earn:"
-echo "$16years - $12years" |bc
-echo "more than people that didn't finish it"
-
-
+echo "The difference in minimum wage between college and non college educated persons in this data set is" 
+val1=$(cat wages.csv |cut -d , -f3,4 |grep -E ^12 |cut -d , -f2|sort -n |head -n 1)
+val2=$(cat wages.csv |cut -d , -f3,4 |grep -E ^16 |cut -d, -f2 |sort -n |head -n 1)
+echo "$val2 - $val1" |bc
