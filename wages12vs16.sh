@@ -1,4 +1,4 @@
-#Activity 3
+#Activity 3: Minimum wages comparison
 #Calculates the difference between the minimum wage of a college graduate and someone who is not (college degree minimum wage - no college minimum wage). 
 #Usage: bash wages12vs16.sh
 
